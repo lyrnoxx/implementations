@@ -5,6 +5,7 @@ from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 transform = transforms.Compose([
     transforms.ToTensor()
@@ -97,3 +98,7 @@ axs[1,0].set_ylabel("Noisy", fontsize=12)
 axs[2,0].set_ylabel("Denoised", fontsize=12)
 plt.tight_layout()
 plt.show()
+
+os.makedirs('models', exist_ok=True)
+torch.save(model.state_dict(), 'models/autoencoder.pth')
+print("Model saved to models/autoencoder.pth")
